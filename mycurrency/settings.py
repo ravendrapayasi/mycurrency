@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',  # DRF for API views
     'django_celery_results',  # Celery results backend
     'adrf',
-    'debug_toolbar'
+    'debug_toolbar',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -144,11 +145,11 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 #CELERY_RESULT_BACKEND = 'mycurrency-db'
 
 # DRF Configuration
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+# }
 
 # RabbitMQ Settings
 RABBITMQ_HOST = 'localhost'

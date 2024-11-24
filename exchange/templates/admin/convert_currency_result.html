@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Conversion Result</title>
+</head>
+<body>
+    <h1>Conversion Result</h1>
+
+    <p>Converted Amount: {{ amount }} {{ source_currency.symbol }} = {{ converted_amount }} {{ target_currency.symbol }}</p>
+    <p>Conversion Rate: 1 {{ source_currency.symbol }} = {{ conversion_rate }} {{ target_currency.symbol }}</p>
+
+    <a href="{% url 'admin:convert_currency' %}">Back to Conversion Form</a>
+</body>
+</html>

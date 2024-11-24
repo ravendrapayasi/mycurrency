@@ -2,19 +2,19 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Currency, CurrencyExchangeRate
-from .serializers import CurrencySerializer, CurrencyExchangeRateSerializer
+from .models import Currency
+from .serializers import CurrencySerializer
 from .forms import CurrencyConversionForm
 from .utils import get_exchange_rate_data,get_currency_rate_data
 from datetime import datetime, timedelta
-from .tasks import load_historical_data,async_load_historical_data
-import redis
+from .tasks import async_load_historical_data
 import asyncio
 import time
-from asgiref.sync import sync_to_async
 from adrf.views import APIView  as aAPIView
 from django.conf import settings
 from .rabbitmq_utils import publish_message
+from django.shortcuts import render
+from django.contrib.admin.views.decorators import staff_member_required
 
 # View to list all currencies
 class CurrencyListView(APIView):
@@ -143,3 +143,15 @@ class CurrencyConverterView(APIView):
 
         except ValueError as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        
+# Admin view for currency conversion
+@staff_member_required
+def convert_currency_view(request):
+    if request.method == 'POST':
+        form = CurrencyConversionForm(request.POST)
+        if form.is_valid():
+            converted_amount = form.get_converted_amount()
+            return render(request, 'admin/convert_currency.html', {'form': form, 'converted_amount': converted_amount})
+    else:
+        form = CurrencyConversionForm()
+    return render(request, 'admin/convert_currency.html', {'form': form})
