@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Currency Conversion</title>
-</head>
-<body>
+{% extends "admin/base_site.html" %}
+{% block title %}
+    Custom Page - {{ title }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">Home</a> › Custom Page
+    </div>
+{% endblock %}
+
+{% block content %}
     <h1>Convert Currency</h1>
 
     <form method="post">
@@ -11,5 +17,4 @@
         {{ form.as_p }}
         <button type="submit">Convert</button>
     </form>
-</body>
-</html>
+{% endblock %}

@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Currency Conversion Result</title>
-</head>
-<body>
+{% extends "admin/base_site.html" %}
+{% block title %}
+    Custom Page - {{ title }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">Home</a> › Custom Page
+    </div>
+{% endblock %}
+{% block content %}
     <h1>Conversion Result</h1>
 
     <p>Converted Amount: {{ amount }} {{ source_currency.symbol }} = {{ converted_amount }} {{ target_currency.symbol }}</p>
     <p>Conversion Rate: 1 {{ source_currency.symbol }} = {{ conversion_rate }} {{ target_currency.symbol }}</p>
-
-    <a href="{% url 'admin:convert_currency' %}">Back to Conversion Form</a>
-</body>
-</html>
+{% endblock %}

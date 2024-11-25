@@ -18,3 +18,7 @@ class CurrencyConvertAdmin(admin.AdminSite):
         return custom_urls + urls
 
 admin_site = CurrencyConvertAdmin(name='CorrencyConvertAdmin')
+
+# Register all models from the default admin site to the custom admin site
+for model in admin.site._registry:
+    admin_site.register(model, admin.site._registry[model].__class__)

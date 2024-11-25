@@ -30,4 +30,4 @@ class CurrencyConversionForm(forms.Form):
             provider=None  # Default provider will be used
         )
         
-        return rate * amount
+        return rate * float(amount)

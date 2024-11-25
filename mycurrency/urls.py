@@ -20,7 +20,7 @@ from exchange.admin import admin_site
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     path('api/v1/', include('exchange.urls')),  # Include exchange app URLs here
     path('__debug__/', include('debug_toolbar.urls')),
     path('admin/',admin_site.urls),

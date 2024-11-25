@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    #'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -154,6 +154,8 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 # RabbitMQ Settings
 RABBITMQ_HOST = 'localhost'
 RABBITMQ_QUEUE = 'my_queue'
+
+APPEND_SLASH=True
 
 LOGGING = {
     'version': 1,

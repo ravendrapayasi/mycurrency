@@ -151,7 +151,8 @@ def convert_currency_view(request):
         form = CurrencyConversionForm(request.POST)
         if form.is_valid():
             converted_amount = form.get_converted_amount()
-            return render(request, 'admin/convert_currency.html', {'form': form, 'converted_amount': converted_amount})
+            print(converted_amount)
+            return render(request, 'admin/convert_currency_result.html', {'form': form, 'converted_amount': converted_amount})
     else:
         form = CurrencyConversionForm()
     return render(request, 'admin/convert_currency.html', {'form': form})
